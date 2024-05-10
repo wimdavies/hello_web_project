@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, request
 
 # Create a new Flask app
@@ -16,6 +17,13 @@ def submit_message():
 def wave():
     name = request.args["name"]
     return f"I am waving at {name}"
+
+@app.route("/count_vowels", methods=["POST"])
+def count_vowels():
+    text = request.form["text"]
+    vowels = r'[aeiouAEIOU]'
+    count = len(re.findall(vowels, text))
+    return f'There are {count} vowels in "{text}"'
 
 # == Example Code Below ==
 
