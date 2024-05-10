@@ -6,6 +6,17 @@ app = Flask(__name__)
 
 # == Your Routes Here ==
 
+@app.route("/submit", methods=["POST"])
+def submit_message():
+    name = request.form["name"]
+    message = request.form["message"]
+    return f'Thanks {name}, you sent this message: "{message}"'
+
+@app.route("/wave", methods=["Get"])
+def wave():
+    name = request.args["name"]
+    return f"I am waving at {name}"
+
 # == Example Code Below ==
 
 # GET /emoji
